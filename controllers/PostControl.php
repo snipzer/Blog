@@ -44,7 +44,7 @@ class PostControl
             throw new Exceptions\NotFoundException("Page not found");
         }
         $post = (int)$_POST['idPost'];
-        Models\CommentsModel::postCommentByIdPost($_POST['auteur'], $_POST['content'], $post);
+        Models\CommentsModel::postCommentByIdPost(htmlentities($_POST['auteur']), htmlentities($_POST['content']), $post);
 
         $tab = [
             'post' => Models\PostsModel::getById($post),
