@@ -1,7 +1,7 @@
 <?php
 namespace Blog\Controllers;
 use Blog\Models;
-use Blog\Classes;
+use Blog\Framework\Vue;
 // Classe qui va gérer l'affichage de la page Home
 class HomeControl
 {
@@ -15,7 +15,7 @@ class HomeControl
         ];
 
         // Préparation de la page Home
-        $home = new Classes\Vue("home", "Accueil blog");
+        $home = new Vue\Vue("home", "Accueil blog");
         // Chargement et envois du tableau de données sur la page
         $home->generer($tab);
     }

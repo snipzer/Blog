@@ -1,6 +1,6 @@
 <?php
-namespace Blog\Classes;
-use Blog\Configuration;
+namespace Blog\Framework\Vue;
+use Blog\Framework\Configuration;
 //Classe qui va gérer les vues
 class Vue
 {

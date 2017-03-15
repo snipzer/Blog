@@ -1,13 +1,11 @@
 <?php
 define("BASE_DIR", __DIR__ . "/");
-use Blog\Classes;
-use Blog\Classes\Exceptions;
+use Blog\Framework\Autoload;
 use Blog\Controllers;
-
-require_once "classes/AutoLoad.php";
+require_once "framework/autoload/AutoLoad.php";
 
 // Classe qui va gérer l'autoload des requires
-Classes\AutoLoad::autoload();
+Autoload\AutoLoad::autoload();
 
 if (!isset($_GET['action']) || !ctype_alpha($_GET['action']))
 {

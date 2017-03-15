@@ -1,5 +1,5 @@
 <?php
-namespace Blog\Configuration;
+namespace Blog\Framework\Configuration;
 
 class Configuration
 {
@@ -25,10 +25,10 @@ class Configuration
     {
         if (self::$parametres == null)
         {
-            $cheminFichier = "configuration/prod.ini";
+            $cheminFichier = "framework/configuration/prod.ini";
             if (!file_exists($cheminFichier))
             {
-                $cheminFichier = "configuration/dev.ini";
+                $cheminFichier = "framework/configuration/dev.ini";
             }
 
             if (!file_exists($cheminFichier))

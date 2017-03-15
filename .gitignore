@@ -1,5 +1,4 @@
 log/*
 doc/*
-configuration/dev.ini
-models/ConfigurationModel.php
+framework/configuration/dev.ini
 .htaccess

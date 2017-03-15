@@ -1,8 +1,8 @@
 <?php
 namespace Blog\Models;
 
-use Blog\Classes\Exceptions;
-
+use Blog\Framework\Exceptions;
+use Blog\Framework\Models;
 // Model pour la table Comment
 class CommentsModel
 {
@@ -14,7 +14,7 @@ class CommentsModel
               FROM blog.comments 
               ORDER BY idComments ASC';
 
-        $request = ConnectionModel::getInstance()->prepare($sql);
+        $request = Models\ConnectionModel::getInstance()->prepare($sql);
         $request->execute();
 
         if ($request->rowCount() != 0)
@@ -38,7 +38,7 @@ class CommentsModel
               WHERE blog.comments.idPosts = :idPosts
               ORDER BY creationDateComments DESC';
 
-        $request = ConnectionModel::getInstance()->prepare($sql);
+        $request = Models\ConnectionModel::getInstance()->prepare($sql);
         $request->bindParam(":idPosts", $idPosts, \PDO::PARAM_INT);
         $request->execute();
         $response = $request->fetchAll(\PDO::FETCH_OBJ);
@@ -54,7 +54,7 @@ class CommentsModel
               FROM blog.comments
               WHERE idComments = :idComments';
 
-        $request = ConnectionModel::getInstance()->prepare($sql);
+        $request = Models\ConnectionModel::getInstance()->prepare($sql);
         $request->bindParam(":idComments", $idComments, \PDO::PARAM_INT);
         $request->execute();
 
@@ -73,7 +73,7 @@ class CommentsModel
     {
         $sql = 'INSERT INTO blog.comments(creationDateComments, authorComments, contentComments, idPosts) VALUES (NOW(), :auteur, :content, :idPost)';
 
-        $request = ConnectionModel::getInstance()->prepare($sql);
+        $request = Models\ConnectionModel::getInstance()->prepare($sql);
 
         $request->bindParam(":auteur", $auteur, \PDO::PARAM_STR);
         $request->bindParam(":content", $content, \PDO::PARAM_STR);

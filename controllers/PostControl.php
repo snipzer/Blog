@@ -1,7 +1,7 @@
 <?php
 namespace Blog\Controllers;
-use Blog\Classes\Exceptions;
-use Blog\Classes;
+use Blog\Framework\Exceptions;
+use Blog\Framework\Vue;
 use \Blog\Models;
 // Classe qui controle la page post
 class PostControl
@@ -30,7 +30,7 @@ class PostControl
         ];
 
         // Instanciation d'une Vue(nomDeLaPage, TitreDeLaPage)
-        $postVue = new Classes\Vue("post", "Blog affichage d'un post");
+        $postVue = new Vue\Vue("post", "Blog affichage d'un post");
 
         // Envois du tableau de données
         $postVue->generer($tab);
@@ -53,7 +53,7 @@ class PostControl
         ];
 
         // Instanciation d'une Vue(nomDeLaPage, TitreDeLaPage)
-        $postVue = new Classes\Vue("post", "Blog affichage d'un post");
+        $postVue = new Vue\Vue("post", "Blog affichage d'un post");
 
         // Envois du tableau de données
         $postVue->generer($tab);

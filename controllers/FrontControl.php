@@ -1,7 +1,6 @@
 <?php
 namespace Blog\Controllers;
-use Blog\Classes\Exceptions;
-use Blog\Classes;
+use Blog\Framework\Exceptions;
 // Contrôleur de controleur
 class FrontControl
 {

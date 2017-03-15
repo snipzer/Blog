@@ -1,7 +1,8 @@
 <?php
 namespace Blog\Models;
 // Model pour la table Posts
-use Blog\Classes\Exceptions;
+use Blog\Framework\Exceptions;
+use Blog\Framework\Models;
 
 class PostsModel
 {
@@ -17,7 +18,7 @@ class PostsModel
                 group by blog.posts.idPosts
                 order by blog.posts.idPosts DESC';
 
-            $request = ConnectionModel::getInstance()->prepare($sql);
+            $request = Models\ConnectionModel::getInstance()->prepare($sql);
             $request->execute();
 
 
@@ -42,7 +43,7 @@ class PostsModel
               where idPosts = :idPosts';
 
 
-            $request = ConnectionModel::getInstance()->prepare($sql);
+            $request = Models\ConnectionModel::getInstance()->prepare($sql);
             $request->bindParam(":idPosts", $idPosts, \PDO::PARAM_INT);
             $request->execute();
 

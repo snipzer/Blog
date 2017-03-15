@@ -1,5 +1,5 @@
 <?php
-namespace Blog\Classes;
+namespace Blog\Framework\Autoload;
 
 class AutoLoad
 {
@@ -19,9 +19,12 @@ class AutoLoad
                 return strtolower($match[1]) . $match[2];
             }, $class);
 
-            include BASE_DIR . "$strFinal.php";
+            include BASE_DIR."$strFinal.php";
 
         });
     }
 }
 ?>
+
+
+

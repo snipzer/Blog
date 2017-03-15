@@ -1,6 +1,8 @@
 <?php
 namespace Blog\Models;
-use Blog\Classes\Exceptions;
+use Blog\Framework\Exceptions;
+use Blog\Framework\Models;
+
 // Model pour la classe Users
 class UsersModel
 {
@@ -14,7 +16,7 @@ class UsersModel
               order by idUsers desc';
 
 
-        $request = ConnectionModel::getInstance()->prepare($sql);
+        $request = Models\ConnectionModel::getInstance()->prepare($sql);
         $request->execute();
 
 
@@ -38,7 +40,7 @@ class UsersModel
               where idUsers = :idUsers';
 
 
-        $request = ConnectionModel::getInstance()->prepare($sql);
+        $request = Models\ConnectionModel::getInstance()->prepare($sql);
         $request->bindParam(":idUsers", $idUsers, \PDO::PARAM_INT);
         $request->execute();
 

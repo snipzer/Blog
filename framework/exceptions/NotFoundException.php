@@ -1,5 +1,5 @@
 <?php
-namespace Blog\Classes\Exceptions;
+namespace Blog\Framework\Exceptions;
 
 class NotFoundException extends \Exception {}
 ?>

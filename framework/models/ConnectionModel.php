@@ -1,6 +1,6 @@
 <?php
-namespace Blog\Models;
-use Blog\Configuration;
+namespace Blog\Framework\Models;
+use Blog\Framework\Configuration;
 // Utilitaire de connection à PDO en singleton
 class ConnectionModel
 {
