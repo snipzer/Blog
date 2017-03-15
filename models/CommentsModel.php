@@ -14,7 +14,7 @@ class CommentsModel
               FROM blog.comments 
               ORDER BY idComments ASC';
 
-        $request = new Models\ConnectionModel();
+        $request = Models\ConnectionModel::getInstance();
         $response = $request->query($sql);
 
         if(sizeof($response) == 0)
@@ -34,7 +34,7 @@ class CommentsModel
               WHERE blog.comments.idPosts = :idPosts
               ORDER BY creationDateComments DESC';
 
-        $request = new Models\ConnectionModel();
+        $request = Models\ConnectionModel::getInstance();
         $response = $request->query($sql, [":idPosts" => $idPosts]);
 
         return $response;
@@ -48,7 +48,7 @@ class CommentsModel
               FROM blog.comments
               WHERE idComments = :idComments';
 
-        $request = new Models\ConnectionModel();
+        $request = Models\ConnectionModel::getInstance();
         $response = $request->query($sql, ["idComments" => $idComments]);
 
         if(sizeof($response) == 0)
@@ -68,7 +68,7 @@ class CommentsModel
             "idPost" => $idPost
         ];
 
-        $request = new Models\ConnectionModel();
+        $request = Models\ConnectionModel::getInstance();
         $response = $request->execute($sql, $params);
 
     }

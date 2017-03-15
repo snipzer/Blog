@@ -8,7 +8,7 @@ class ConnectionModel
     private static $_instance;
     private $_pdo;
 
-    public function __construct()
+    private function __construct()
     {
         $dbname = Configuration\Configuration::get("DB", "DBNAME");
         $dbhost = Configuration\Configuration::get("DB", "HOST");

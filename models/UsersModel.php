@@ -15,7 +15,7 @@ class UsersModel
               from blog.users 
               order by idUsers desc';
 
-        $request = new Models\ConnectionModel();
+        $request = Models\ConnectionModel::getInstance();
         $response = $request->query($sql);
 
         if(sizeof($response) == 0)
@@ -33,7 +33,7 @@ class UsersModel
               from blog.users
               where idUsers = :idUsers';
 
-        $request = new Models\ConnectionModel();
+        $request = Models\ConnectionModel::getInstance();
         $response = $request->query($sql, ["isUsers" => $idUsers]);
         if(sizeof($response) == 0)
         {

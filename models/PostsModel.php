@@ -19,7 +19,7 @@ class PostsModel
                 GROUP BY blog.posts.idPosts
                 ORDER BY blog.posts.idPosts DESC';
 
-        $request = new Models\ConnectionModel();
+        $request = Models\ConnectionModel::getInstance();
         $response = $request->query($sql);
         if(sizeof($response) == 0)
         {
@@ -38,7 +38,7 @@ class PostsModel
               WHERE idPosts = :idPosts';
 
 
-        $request = new Models\ConnectionModel();
+        $request = Models\ConnectionModel::getInstance();
         $response = $request->query($sql, [":idPosts" => $idPosts]);
 
 
