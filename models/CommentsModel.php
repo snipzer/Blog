@@ -14,19 +14,15 @@ class CommentsModel
               FROM blog.comments 
               ORDER BY idComments ASC';
 
-        $request = Models\ConnectionModel::getInstance()->prepare($sql);
-        $request->execute();
+        $request = new Models\ConnectionModel();
+        $response = $request->query($sql);
 
-        if ($request->rowCount() != 0)
-        {
-            $response = $request->fetchAll(\PDO::FETCH_OBJ);
-            return $response;
-        }
-        else
+        if(sizeof($response) == 0)
         {
             throw new Exceptions\NotFoundException("Page not found");
         }
 
+        return $response;
     }
 
     // Get all comment for a post
@@ -38,12 +34,10 @@ class CommentsModel
               WHERE blog.comments.idPosts = :idPosts
               ORDER BY creationDateComments DESC';
 
-        $request = Models\ConnectionModel::getInstance()->prepare($sql);
-        $request->bindParam(":idPosts", $idPosts, \PDO::PARAM_INT);
-        $request->execute();
-        $response = $request->fetchAll(\PDO::FETCH_OBJ);
-        return $response;
+        $request = new Models\ConnectionModel();
+        $response = $request->query($sql, [":idPosts" => $idPosts]);
 
+        return $response;
     }
 
     //Get one comment with his id
@@ -54,32 +48,29 @@ class CommentsModel
               FROM blog.comments
               WHERE idComments = :idComments';
 
-        $request = Models\ConnectionModel::getInstance()->prepare($sql);
-        $request->bindParam(":idComments", $idComments, \PDO::PARAM_INT);
-        $request->execute();
+        $request = new Models\ConnectionModel();
+        $response = $request->query($sql, ["idComments" => $idComments]);
 
-        if ($request->rowCount() != 0)
-        {
-            $response = $request->fetchAll(\PDO::FETCH_OBJ);
-            return $response;
-        }
-        else
+        if(sizeof($response) == 0)
         {
             throw new Exceptions\NotFoundException("Page not found");
         }
+        return $response;
     }
 
     public static function postCommentByIdPost($auteur, $content, int $idPost)
     {
         $sql = 'INSERT INTO blog.comments(creationDateComments, authorComments, contentComments, idPosts) VALUES (NOW(), :auteur, :content, :idPost)';
 
-        $request = Models\ConnectionModel::getInstance()->prepare($sql);
+        $params = [
+            "auteur" => $auteur,
+            "content" => $content,
+            "idPost" => $idPost
+        ];
 
-        $request->bindParam(":auteur", $auteur, \PDO::PARAM_STR);
-        $request->bindParam(":content", $content, \PDO::PARAM_STR);
-        $request->bindParam(":idPost", $idPost, \PDO::PARAM_INT);
+        $request = new Models\ConnectionModel();
+        $response = $request->execute($sql, $params);
 
-        $request->execute();
     }
 }
 

@@ -15,20 +15,14 @@ class UsersModel
               from blog.users 
               order by idUsers desc';
 
+        $request = new Models\ConnectionModel();
+        $response = $request->query($sql);
 
-        $request = Models\ConnectionModel::getInstance()->prepare($sql);
-        $request->execute();
-
-
-        if($request->rowCount() != 0)
-        {
-            $response = $request->fetchAll(\PDO::FETCH_OBJ);
-            return $response;
-        }
-        else
+        if(sizeof($response) == 0)
         {
             throw new Exceptions\NotFoundException("Page not found");
         }
+        return $response;
     }
 
 
@@ -39,21 +33,13 @@ class UsersModel
               from blog.users
               where idUsers = :idUsers';
 
-
-        $request = Models\ConnectionModel::getInstance()->prepare($sql);
-        $request->bindParam(":idUsers", $idUsers, \PDO::PARAM_INT);
-        $request->execute();
-
-
-        if($request->rowCount() != 0)
-        {
-            $response = $request->fetchAll(\PDO::FETCH_OBJ);
-            return $response;
-        }
-        else
+        $request = new Models\ConnectionModel();
+        $response = $request->query($sql, ["isUsers" => $idUsers]);
+        if(sizeof($response) == 0)
         {
             throw new Exceptions\NotFoundException("Page not found");
         }
+        return $response;
     }
 }
 ?>
