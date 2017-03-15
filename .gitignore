@@ -1,0 +1,5 @@
+log/*
+doc/*
+configuration/dev.ini
+models/ConfigurationModel.php
+.htaccess
