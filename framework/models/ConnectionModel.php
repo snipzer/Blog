@@ -27,17 +27,7 @@ class ConnectionModel
         }
         return self::$_instance;
     }
-/*
-    public function query($str)
-    {
-        return self::$_pdo->query($str);
-    }
 
-    public function prepare($str)
-    {
-        return self::$_pdo->prepare($str);
-    }
-*/
     public function execute(string $sql, array $params = [])
     {
         if(empty($params))
