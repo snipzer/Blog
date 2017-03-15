@@ -12,5 +12,5 @@ if (!isset($_GET['action']) || !ctype_alpha($_GET['action']))
     $_GET['action'] = "home";
 }
 
-Controllers\FrontControl::pageHandler($_GET['action']);
+Controllers\Routeur::pageHandler($_GET['action']);
 ?>
