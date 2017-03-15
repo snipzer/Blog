@@ -36,6 +36,24 @@ class ConnectionModel
     {
         return self::$_pdo->prepare($str);
     }
+
+
+    /*  Methode permettant de compacter les deux fonctions query et prepare, perte de flexibilité au profis d'une factorisation de code redondant
+    public function query(string $sql, array $params = [])
+    {
+        if(empty($params))
+        {
+            $statements = self::getInstance()->query($sql);
+        }
+        else
+        {
+            $statements = self::getInstance()->prepare($sql);
+            $statements->execute($params);
+        }
+
+        return $statements->fetchAll(\PDO::FETCH_OBJ);
+    }
+    */
 }
 
 ?>
