@@ -8,10 +8,10 @@
 <?php foreach ($comments as $comment): ?>
     <article>
         <header>
-            <h2 class="titreBillet"><?php echo $comment->auteur ?></h2>
-            <time><?= $comment->date ?></time>
+            <h2 class="titreBillet"><?php echo nl2br(htmlentities($comment->auteur)) ?></h2>
+            <time><?= nl2br(htmlentities($comment->date)) ?></time>
         </header>
-        <p><?= $comment->Commentaire ?></p>
+        <p><?= nl2br(htmlentities($comment->commentaire)) ?></p>
     </article>
     <hr/>
 <?php endforeach; ?>

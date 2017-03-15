@@ -2,6 +2,7 @@
 define("BASE_DIR", __DIR__ . "/");
 use Blog\Framework\Autoload;
 use Blog\Controllers;
+
 require_once "framework/autoload/AutoLoad.php";
 
 // Classe qui va gérer l'autoload des requires
