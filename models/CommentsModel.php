@@ -3,6 +3,7 @@ namespace Blog\Models;
 
 use Blog\Framework\Exceptions;
 use Blog\Framework\Models;
+
 // Model pour la table Comment
 class CommentsModel
 {
@@ -17,7 +18,7 @@ class CommentsModel
         $request = Models\ConnectionModel::getInstance();
         $response = $request->query($sql);
 
-        if(sizeof($response) == 0)
+        if (sizeof($response) == 0)
         {
             throw new Exceptions\NotFoundException("Page not found");
         }
@@ -40,7 +41,7 @@ class CommentsModel
         return $response;
     }
 
-    //Get one comment with his id
+    // Get one comment with his id
     public static function getById(int $idComments)
     {
         $sql = '
@@ -51,13 +52,14 @@ class CommentsModel
         $request = Models\ConnectionModel::getInstance();
         $response = $request->query($sql, ["idComments" => $idComments]);
 
-        if(sizeof($response) == 0)
+        if (sizeof($response) == 0)
         {
             throw new Exceptions\NotFoundException("Page not found");
         }
-        return $response;
+        return $response[0];
     }
 
+    // Post a new comment for a post
     public static function postCommentByIdPost($auteur, $content, int $idPost)
     {
         $sql = 'INSERT INTO blog.comments(creationDateComments, authorComments, contentComments, idPosts) VALUES (NOW(), :auteur, :content, :idPost)';

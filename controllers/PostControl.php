@@ -26,7 +26,7 @@ class PostControl
             'post' => Models\PostsModel::getById($id),
             // Appel du modèle Comments pour avoir les commentaires correspondant à un post
             'comments' => Models\CommentsModel::getByPostId($id),
-            'users' => Models\UsersModel::getUsers()
+            'users' => Models\UsersModel::getAll()
         ];
 
         // Instanciation d'une Vue(nomDeLaPage, TitreDeLaPage)
@@ -49,7 +49,7 @@ class PostControl
         $tab = [
             'post' => Models\PostsModel::getById($post),
             'comments' => Models\CommentsModel::getByPostId($post),
-            'users' => Models\UsersModel::getUsers()
+            'users' => Models\UsersModel::getAll()
         ];
 
         // Instanciation d'une Vue(nomDeLaPage, TitreDeLaPage)

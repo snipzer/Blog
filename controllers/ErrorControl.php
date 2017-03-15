@@ -1,7 +1,6 @@
 <?php
 namespace Blog\Controllers;
-use Blog\Models;
-use Blog\Classes;
+use Blog\Framework\Vue;
 // Classe qui va gérer l'affichage de la page Home
 class ErrorControl
 {
@@ -16,7 +15,7 @@ class ErrorControl
         ];
 
 
-        $errorView = new Classes\Vue("error", "Page d'erreur");
+        $errorView = new Vue\Vue("error", "Page d'erreur");
         $errorView->generer($tab);
     }
 }

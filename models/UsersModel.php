@@ -7,8 +7,8 @@ use Blog\Framework\Models;
 class UsersModel
 {
 
-    // Renvois tout les utilisateurs
-    public static function getUsers()
+    // Get all user
+    public static function getAll()
     {
         $sql = '
               select idUsers as id, nameUsers as username 
@@ -25,8 +25,8 @@ class UsersModel
         return $response;
     }
 
-
-    public static function getUser(int $idUsers)
+    // Get one user
+    public static function getById(int $idUsers)
     {
         $sql = '
               select idUsers as id, nameUsers as username 
@@ -39,7 +39,7 @@ class UsersModel
         {
             throw new Exceptions\NotFoundException("Page not found");
         }
-        return $response;
+        return $response[0];
     }
 }
 ?>

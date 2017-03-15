@@ -7,7 +7,6 @@ use Blog\Framework\Models;
 
 class PostsModel
 {
-
     // Get all post
     public static function getAll()
     {
@@ -21,7 +20,7 @@ class PostsModel
 
         $request = Models\ConnectionModel::getInstance();
         $response = $request->query($sql);
-        if(sizeof($response) == 0)
+        if (sizeof($response) == 0)
         {
             throw new Exceptions\NotFoundException("Page not found");
         }
@@ -42,7 +41,7 @@ class PostsModel
         $response = $request->query($sql, [":idPosts" => $idPosts]);
 
 
-        if(sizeof($response) == 0)
+        if (sizeof($response) == 0)
         {
             throw new Exceptions\NotFoundException("Page not found");
         }
