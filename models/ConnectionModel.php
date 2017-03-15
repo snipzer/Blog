@@ -27,7 +27,6 @@ class ConnectionModel
         return self::$_instance;
     }
 
-
     public function query($str)
     {
         return self::$_pdo->query($str);
@@ -37,7 +36,6 @@ class ConnectionModel
     {
         return self::$_pdo->prepare($str);
     }
-
 }
 
 ?>
